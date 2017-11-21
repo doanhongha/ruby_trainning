@@ -1,58 +1,33 @@
-<p id="notice"><%= notice %></p>
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password digest</th>
-      <th>Role</th>
-      <th>Deleted at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
-        <td><%= user.role %></td>
-        <td><%= user.deleted_at %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <div class="col-md-8">
+    <% @posts.each do |post| %>
+    <div style="border-radius: 5px; border: 1px solid rgba(0,0,0,.125); margin-bottom: 30px;">
+      <img style="border-radius: 5px 5px 0px 0px;" src="http://placehold.it/750x300" alt="Card image cap">
+      <h2 class="margin-left-15"><%=  post.title %></h2>
+      <p class="margin-left-15"><%=  post.content %></p>
+      <%= link_to 'Read More →', post, :class => 'btn btn-primary', :style => "color:white;margin-left:15px;"%>
+      <div style="border-top: 1px solid rgba(0,0,0,.125); margin-top: 15px;background:  rgba(0,0,0,.03);">
+        <span style="line-height: 50px; font-size: 15px; margin-left: 15px;">Post on 2017</span>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="col-md-4">
+    <div style=" border: 1px solid rgba(0,0,0,.125);border-radius: 5px; margin-bottom: 30px; padding-bottom: 5px;">
+      <div style="height: 50px; background: rgba(0,0,0,.03); border-bottom: 1px solid rgba(0,0,0,.125);margin-bottom: 5px;"><p class="div-tags">Tags</p>
+      </div>
+      <img style="width: 80px; margin-left: 15px; margin-right: 15px; float: left;" src="/image/about_me.jpeg">
+      <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
+      </span>
+    </div>
 
-<br>
+    <div style="height: auto; border: 1px solid rgba(0,0,0,.125);border-radius: 5px;">
+      <div style="height: 50px; background: rgba(0,0,0,.03); border-bottom: 1px solid rgba(0,0,0,.125);margin-bottom: 5px;"><p class="div-tags">Tags</p>
+      </div>
+      <% @tags.each do |tag| %>
+        <a href=""><span class="col-md-6 hover"><%= tag.name %></span></a>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<h1>Tags</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Deleted at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= tag.deleted_at %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New User', new_user_path %>

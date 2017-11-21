@@ -26,12 +26,21 @@ module SessionsHelper
 
 	def fillnav
 		if !current_user.nil?
-			raw('
-				<ul class="dropdown-menu">
-		            <li><a href="/users/' + @current_user.id.to_s + '">'+@current_user.name+'</a></li>
-		            <li><a data-method="delete" href="/logout">Logout</a></li>
-		        </ul>
-				')
+			if current_user.role == 1
+				raw('
+					<ul class="dropdown-menu">
+			            <li><a href="/admin/' + @current_user.id.to_s + '">'+@current_user.name+'</a></li>
+			            <li><a data-method="delete" href="/logout">Logout</a></li>
+			        </ul>
+					')
+			else
+				raw('
+					<ul class="dropdown-menu">
+			            <li><a href="/users/' + @current_user.id.to_s + '">'+@current_user.name+'</a></li>
+			            <li><a data-method="delete" href="/logout">Logout</a></li>
+			        </ul>
+					')
+			end
 		else
 			'<ul class="dropdown-menu">
 	            <li><a href="/register">Register</a></li>
