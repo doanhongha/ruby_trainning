@@ -1,0 +1,16 @@
+<% provide(:title, "Login") %>
+<%= form_for(:session, url: login_path) do |f| %>
+	<% flash.each do |name, msg| -%>
+		<%= content_tag :div, msg, class: "alert #(name)" %>
+	<% end -%>
+	<div>
+		<%= f.label :email %>
+		<%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+	</div>
+	<div>
+		<%= f.label :password %>
+		<%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+	</div>
+
+	<%= f.submit "Login", class: "btn btn-primary" %>
+<% end %>
