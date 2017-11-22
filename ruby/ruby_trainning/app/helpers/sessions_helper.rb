@@ -3,6 +3,12 @@ module SessionsHelper
 		session[:user_id] = user.id
 	end
 
+	def remember(user)
+		user.remember
+		cookies.permanent.signed[:user_id] = user.id
+		cookies.permanent[:remember_token] = user.remember_token
+	end
+
 	def current_user
 		@current_user ||=User.find_by(id: session[:user_id])
 		#a - a|| b <-> a ||= b y nghia: a = nil thi gan a = b khong thi thoi
@@ -20,7 +26,7 @@ module SessionsHelper
 
 	def logged_in_user
 		unless logged_in?
-	        redirect_to @current_user
+	        redirect_to '/'
 	    end
 	end
 
