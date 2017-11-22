@@ -7,26 +7,26 @@
       <p class="margin-left-15"><%=  post.content %></p>
       <%= link_to 'Read More →', post, :class => 'btn btn-primary', :style => "color:white;margin-left:15px;"%>
       <div style="border-top: 1px solid rgba(0,0,0,.125); margin-top: 15px;background:  rgba(0,0,0,.03);">
-        <span style="line-height: 50px; font-size: 15px; margin-left: 15px;">Post on 2017</span>
+        <span style="line-height: 50px; font-size: 15px; margin-left: 15px;">Post on <%= post.created_at %></span>
       </div>
     </div>
     <% end %>
   </div>
   <div class="col-md-4">
     <div style=" border: 1px solid rgba(0,0,0,.125);border-radius: 5px; margin-bottom: 30px; padding-bottom: 5px;">
-      <div style="height: 50px; background: rgba(0,0,0,.03); border-bottom: 1px solid rgba(0,0,0,.125);margin-bottom: 5px;"><p class="div-tags">Tags</p>
+      <div style="height: 50px; background: rgba(0,0,0,.03); border-bottom: 1px solid rgba(0,0,0,.125);margin-bottom: 5px;"><p class="div-tags">About me!</p>
       </div>
       <img style="width: 80px; margin-left: 15px; margin-right: 15px; float: left;" src="/image/about_me.jpeg">
       <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
       </span>
     </div>
 
-    <div style="height: auto; border: 1px solid rgba(0,0,0,.125);border-radius: 5px;">
+    <div style="height: 150px; border: 1px solid rgba(0,0,0,.125);border-radius: 5px;">
       <div style="height: 50px; background: rgba(0,0,0,.03); border-bottom: 1px solid rgba(0,0,0,.125);margin-bottom: 5px;"><p class="div-tags">Tags</p>
       </div>
-      <% @tags.each do |tag| %>
-        <a href=""><span class="col-md-6 hover"><%= tag.name %></span></a>
-      <% end %>
+        <% @tags.each do |tag| %>
+          <a href=""><span class="col-md-6 hover"><%= tag.name %></span></a>
+        <% end %> 
     </div>
   </div>
 </div>
